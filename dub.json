@@ -1,0 +1,27 @@
+{
+    "name": "midi-gamepad",
+    "description": "MIDI GamePad",
+
+    "copyright": "Copyright © 2017 0xEAB",
+    "license": "GPL-3.0",
+
+    "authors": [
+        "Elias Batek (0xEAB)"
+    ],
+
+    "targetPath": "bin",
+    "targetType": "executable",
+
+    "libs": [
+        "user32",
+        "winmm"
+    ],
+
+    "stringImportPaths": [
+        "source/static"
+    ],
+
+    "dependencies": {
+        "dplug:client": "~>6.0.7"
+    }
+}

@@ -22,6 +22,6 @@
     ],
 
     "dependencies": {
-        "dplug:client": "~>6.0.7"
+        "dplug:client": "~>6.0.8"
     }
 }

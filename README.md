@@ -17,7 +17,7 @@ To start in TUI mode, just pass *no* parameters (or `--tui`).
 
 ## Build
 
-You can either build this app yourself (see both variants below) or just *download* a precompiled binary from the [releases page](releases).
+You can either build this app yourself (see both variants below) or just *download* a precompiled binary from the [releases page](https://github.com/voidblaster/midi-gamepad/releases).
 
 ### Using DUB
 1. `git clone https://github.com/voidblaster/midi-gamepad`

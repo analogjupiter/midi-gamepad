@@ -1,0 +1,34 @@
+{
+    "description": "MIDI GamePad mapping abc",
+    "authors": [
+        "0xEAB"
+    ],
+    "version": {
+        "version": "r001",
+        "date": "2018-01-05"
+    },
+
+    "map": {
+        "onNote": [{
+            "note": "0x30",
+            "vkey": "65",
+            "extended": false,
+            "comment": "C4: [A]"
+        }, {
+            "note": "0x32",
+            "vkey": "0x42",
+            "extended": false,
+            "comment": "D4: [B]"
+        }, {
+            "note": "52",
+            "vkey": "67",
+            "extended": false,
+            "comment": "E4: [C]"
+        }, {
+            "note": "53",
+            "vkey": "0x44",
+            "extended": false,
+            "comment": "F4: [D]"
+        }]
+    }
+}

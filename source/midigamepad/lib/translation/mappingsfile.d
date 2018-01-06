@@ -24,6 +24,7 @@ import std.file : readText;
 import std.json;
 import std.string;
 import std.stdio : write, writeln;
+import std.utf : UTFException;
 
 import midigamepad.lib.keyboard;
 import midigamepad.lib.util;
@@ -35,7 +36,17 @@ public import midigamepad.lib.translation.mapping;
  +/
 MappingsCollection parseFile(string filePath)
 {
-    immutable string json = readText(filePath);
+    string json = void;
+
+    try
+    {
+        json = readText(filePath);
+    }
+    catch (UTFException ex)
+    {
+        throw new MappingsParserException("Not a text file", ex);
+    }
+
     return parse(json);
 }
 
@@ -44,14 +55,29 @@ MappingsCollection parseFile(string filePath)
  +/
 MappingsCollection parse(string json)
 {
-    MappingsCollection output = MappingsCollection();
+    JSONValue root = void;
 
-    immutable JSONValue root = parseJSON(json, JSONOptions.escapeNonAsciiChars);
+    try
+    {
+        root = parseJSON(json, JSONOptions.escapeNonAsciiChars);
+    }
+    catch (JSONException ex)
+    {
+        throw new MappingsParserException("Bad JSON", ex);
+    }
+
+    // Make sure there is a 'map' field
+    enforce(("map" in root.object), new MappingsParserException("Missing 'map' field", root));
     immutable JSONValue map = root.object["map"];
 
+    MappingsCollection output = MappingsCollection();
+
     // onNote mappings
-    immutable JSONValue onNote = map.object["onNote"];
-    output.noteOnOff = parseNoteOnOffMappings(onNote);
+    if ("onNote" in map.object)
+    {
+        immutable JSONValue onNote = map.object["onNote"];
+        output.noteOnOff = parseNoteOnOffMappings(onNote);
+    }
 
     return output;
 }
@@ -69,8 +95,8 @@ NoteOnOffMapping[] parseNoteOnOffMappings(JSONValue noteOnOffRoot)
         uint vKey = void;
 
         // Ensure that the required elements exist
-        enforce(("vkey" in m), new MappingsParserException("Missing 'vkey' definition.", m));
-        enforce(("note" in m), new MappingsParserException("Missing 'note' definition.", m));
+        enforce(("vkey" in m), new MappingsParserException("Missing 'vkey' field", m));
+        enforce(("note" in m), new MappingsParserException("Missing 'note' field", m));
 
         immutable string vKeyStr = m["vkey"].str;
         immutable string noteStr = m["note"].str;
@@ -187,9 +213,15 @@ class MappingsParserException : Exception
     /++
         ctor
      +/
-    public this(string msg, JSONValue faultyMapping, Throwable next = null)
+    public this(string msg, Throwable next = null)
     {
         super(msg, next);
+    }
+
+    /++ ditto +/
+    public this(string msg, JSONValue faultyMapping, Throwable next = null)
+    {
+        this(msg, next);
         this._faultyMapping = faultyMapping;
     }
 }

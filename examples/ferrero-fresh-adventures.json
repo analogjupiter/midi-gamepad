@@ -13,51 +13,42 @@
         "onNote": [{
                 "note": "0x30",
                 "vkey": "68",
-                "extended": false,
                 "comment": "C4: D ... Switch charakter"
             }, {
                 "note": "0x32",
                 "vkey": "83",
-                "extended": false,
                 "comment": "D4: S ... Throw snowball"
             }, {
                 "note": "0x34",
                 "vkey": "83",
-                "extended": false,
                 "comment": "E4: S ... Throw snowball"
             }, {
                 "note": "0x35",
                 "vkey": "65",
-                "extended": false,
                 "comment": "F4: A ... Jump"
             },
 
             {
                 "note": "78",
                 "vkey": "0x1B",
-                "extended": false,
                 "comment": "F#7: Esc ... Exit/Skip"
             },
 
             {
                 "note": "0x47",
                 "vkey": "0x25",
-                "extended": true,
                 "comment": "B5: LeftArrow ... Move left"
             }, {
                 "note": "0x48",
                 "vkey": "0x28",
-                "extended": true,
                 "comment": "C6: DownArrow ... Duck"
             }, {
                 "note": "0x49",
                 "vkey": "0x26",
-                "extended": true,
                 "comment": "C#6: UpArrow ... Climb"
             }, {
                 "note": "0x4A",
                 "vkey": "0x27",
-                "extended": true,
                 "comment": "D6: RightArrow ... Move Right"
             }
         ]

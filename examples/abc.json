@@ -12,23 +12,23 @@
         "onNote": [{
             "note": "0x30",
             "vkey": "65",
-            "extended": false,
             "comment": "C4: [A]"
         }, {
             "note": "0x32",
             "vkey": "0x42",
-            "extended": false,
             "comment": "D4: [B]"
         }, {
             "note": "52",
             "vkey": "67",
-            "extended": false,
             "comment": "E4: [C]"
         }, {
             "note": "53",
             "vkey": "0x44",
-            "extended": false,
             "comment": "F4: [D]"
+        }, {
+            "note": "55",
+            "vkey": "E",
+            "comment": "G4: [E]"
         }]
     }
 }

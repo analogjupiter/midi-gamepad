@@ -76,9 +76,20 @@ int launchCommandline(string[] args)
             return 1;
         }
 
-        // Launch the main IO processor
         MIDIDeviceInfo dev = getMIDIInputDeviceInfo(selection);
-        MappingsCollection mpc = parseFile(args[2]);
+        MappingsCollection mpc = void;
+
+        try
+        {
+            mpc = parseFile(args[2]);
+        }
+        catch (MappingsParserException ex)
+        {
+            printMappingsParserException(ex);
+            return 1;
+        }
+
+        // Launch the main IO processor
         return runMIDIGamePad(dev, mpc);
     }
     else

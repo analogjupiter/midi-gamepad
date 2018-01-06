@@ -19,6 +19,13 @@ module midigamepad.shell.texts;
 
 import std.stdio;
 
+import midigamepad.lib.translation.mappingsfile;
+
+/++
+    LF + 2 tabulators
+ +/
+enum newLineDoubleTab = "\n\t\t";
+
 /++
     Prints the app+version info and the license header
  +/
@@ -57,4 +64,29 @@ void printHelp(string app)
         --version | -v      Prints the version info
 
 `);
+}
+
+/++
+    Prints the passed MappingsParserException
+ +/
+void printMappingsParserException(MappingsParserException ex)
+{
+    writeln("E:\tAn error occured while parsing the mappings file  :(");
+
+    write(newLineDoubleTab);
+    write(ex.msg);
+
+    if (ex.faultyMapping.toString == "")
+    {
+        write(newLineDoubleTab);
+        write("\t");
+        writeln(ex.faultyMapping);
+    }
+
+    if (ex.next !is null)
+    {
+        write(newLineDoubleTab);
+        write("\t");
+        writeln(ex.next.msg);
+    }
 }

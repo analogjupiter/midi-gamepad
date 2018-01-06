@@ -28,7 +28,8 @@ import midigamepad.lib;
 /++
     Starts the core MIDI GamePad program
  +/
-int runMIDIGamePad(MIDIDeviceInfo inputDevice, MappingsCollection mappings, bool showStartMessage = false)
+int runMIDIGamePad(MIDIDeviceInfo inputDevice, MappingsCollection mappings,
+        bool showStartMessage = false)
 in
 {
     assert(inputDevice.type == MIDIDeviceType.input);
@@ -46,9 +47,9 @@ body
         return 1;
     }
 
-    if(showStartMessage)
+    if (showStartMessage)
     {
-        writeln("MIDI GamePad has successfully been loaded.\nHave phun ^^");
+        writeln("\n\n.::  MIDI GamePad is ready to play ^^");
     }
 
     while (true)

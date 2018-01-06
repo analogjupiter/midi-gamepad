@@ -43,8 +43,8 @@ int launchTUI()
 {
     printHeader();
 
-    MIDIDeviceInfo selectedDevice;
-    MappingsCollection mappings;
+    MIDIDeviceInfo selectedDevice = void;
+    MappingsCollection mappings = void;
 
     while (true)
     {
@@ -53,7 +53,7 @@ int launchTUI()
         if (devicesCount == 0)
         {
             // No suitable devices connected
-            writeln("E:\tNo MIDI Input Devices connected.\n\tExiting... :(");
+            writeln("E:\tNo MIDI Input Devices connected.\n\tExiting...  :(");
             return 1;
         }
 
@@ -98,7 +98,7 @@ int launchTUI()
             }
             catch (ConvException)
             {
-                writeln("\nE:\tInvalid device selection :(\n");
+                writeln("\nE:\tInvalid device selection  :(\n");
             }
 
             if (selection >= devicesCount)
@@ -126,25 +126,23 @@ int launchTUI()
 
         if (!selectedMappingsFile.exists)
         {
-            writeln("\nE:\tCannot find the specified path :(");
+            writeln("\nE:\tCannot find the specified path  :(\n");
             continue;
         }
 
         try
         {
             mappings = parseFile(selectedMappingsFile);
-            writeln("Mappings file successfully loaded :D\n");
+            writeln("Mappings file successfully loaded  :D\n");
             break;
         }
-        catch (Exception ex)
+        catch (MappingsParserException ex)
         {
-            writeln("\nE:\tThere is a problem with the specified file :(\n");
-            write("\t\t");
-            writeln(ex.msg);
+            writeln();
+            printMappingsParserException(ex);
             writeln("\n");
             continue;
         }
-
     }
 
     writeln("Bootstrapping ...");

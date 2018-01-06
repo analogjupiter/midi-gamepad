@@ -110,7 +110,7 @@ NoteOnOffMapping[] parseNoteOnOffMappings(JSONValue noteOnOffRoot)
 bool tryParseVKEY(string input, out uint vKey) nothrow pure @safe
 {
     // Check whether vKey is a number (hex or dec)
-    if ((input.startsWith("0x")) ? input[2 .. $].isNumeric : input.isNumeric)
+    if (input.startsWith("0x") || input.isNumeric)
     {
         try
         {
@@ -141,6 +141,9 @@ bool tryParseVKEY(string input, out uint vKey) nothrow pure @safe
 
     assert("0x12".tryParseVKEY(output));
     assert(output == 0x12);
+
+    assert("0x1B".tryParseVKEY(output));
+    assert(output == 0x1B);
 
     assert("31".tryParseVKEY(output));
     assert(output == 31);

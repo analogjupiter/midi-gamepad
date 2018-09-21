@@ -1,4 +1,4 @@
-# 🎹🎮 MIDI GamePad [![Dub version](https://img.shields.io/dub/v/midi-gamepad.svg)](https://code.dlang.org/packages/midi-gamepad) [![GPL-3.0](https://img.shields.io/dub/l/midi-gamepad.svg)](LICENSE.txt)
+# 🎹🎮 MIDI GamePad [![Dub version](https://img.shields.io/dub/v/midi-gamepad.svg)](https://code.dlang.org/packages/midi-gamepad) [![BSL-1.0](https://img.shields.io/dub/l/midi-gamepad.svg)](LICENSE_1_0.txt)
 This little tool allows you to **play your favorite games with your MIDI keyboard**.
 
 

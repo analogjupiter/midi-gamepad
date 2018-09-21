@@ -2,8 +2,8 @@
     "name": "midi-gamepad",
     "description": "🎹🎮 Play your favorite games with your MIDI keyboard!",
 
-    "copyright": "Copyright © 2017 0xEAB",
-    "license": "GPL-3.0",
+    "copyright": "Copyright © 2017-2018  0xEAB",
+    "license": "BSL-1.0",
 
     "authors": [
         "Elias Batek (0xEAB)"
